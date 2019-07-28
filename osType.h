@@ -1,0 +1,53 @@
+#ifndef __OS_TYPE_H__
+#define __OS_TYPE_H__
+
+#include <stdint.h>
+
+
+enum
+{
+    NETLIB_STATE_ERROR = -1,
+    NETLIB_STATR_OK = 0
+};
+enum
+{
+    NETLIB_MSG_CONNECT = 1,
+    NETLIB_MSG_CONFIRM,
+    NETLIB_MSG_READ,
+    NETLIB_MSG_WRITE,
+    NETLIB_MSG_CLOSE,
+    NETLIB_MSG_TIMER,
+    NETLIB_MSG_LOOP
+};
+enum
+{
+    NETLIB_OPT_SET_CALLBACK,
+    NETLIB_OPT_SET_CALLBACK_DATA,
+    NETLIB_OPT_GET_REMOTE_IP,
+    NETLIB_OPT_GET_REMOTE_PORT,
+    NETLIB_OPT_GET_LOCAL_IP,
+    NETLIB_OPT_GET_LOCAL_PORT,
+    NETLIB_OPT_SET_SEND_BUF_SZIE,
+    NETLIB_OPT_SET_RECV_BUF_SIZE
+};
+typedef int FILEDES;
+typedef int OPERATION;
+typedef int HANDLE;
+typedef int MESSAGE;
+
+const int SOCKET_ERROR = -1;
+const int SOCKET_INVALID = -1;
+enum
+{
+    SOCKET_STATE_IDLE,
+    SOCKET_STATE_LISTENING,
+    SOCKET_STATE_CONNECTING,
+    SOCKET_STATE_CONNECTED,
+    SOCKET_STATE_CLOSEING
+};
+
+typedef void (*callback_t) (void* callbackData, MESSAGE msg, HANDLE handle, void* param);
+
+const int EPOLL_ERROR = -1;
+
+#endif
